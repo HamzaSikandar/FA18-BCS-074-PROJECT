@@ -84,7 +84,7 @@ header {
   left: 0;
   z-index: 1000;
   width: 100%;
-  background: #fff;
+  background: rgb(70, 0, 0);
   padding: 1.5rem 10%;
   box-shadow: 0 0.3rem 2rem rgba(0, 0, 0, 0.1);
   display: flex;
@@ -109,7 +109,7 @@ header .navbar ul li {
 
 header .navbar ul li a {
   font-size: 1.7rem;
-  color: #666;
+  color: white;
 }
 
 header .navbar ul li a.active,
@@ -400,6 +400,70 @@ header #menu-bar {
 .gallery .box-container .box:hover::before {
   top: 0;
 }
+.login {
+  background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)),
+    url("../images/registration.jpg") no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.login h1 {
+  color: lightgray;
+  font-size: 9rem;
+}
+
+.register {
+  background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)),
+    url("../images/registration.jpg") no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.register h1 {
+  font-size: 8rem;
+  color: red;
+}
+.register .row {
+  display: flex;
+  background: #fff;
+  margin: 12rem 0;
+  overflow: hidden;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
+  border-radius: 1rem;
+}
+
+.register .row .image {
+  flex: 1 1 40%;
+}
+
+.register .row .image img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.register .row form {
+  flex: 1 1 60%;
+  background: #fff;
+  padding: 2rem;
+}
+
+.register .row form .box {
+  padding: 1rem;
+  margin: 1rem 0;
+  font-size: 1.5rem;
+  color: #333;
+  text-transform: none;
+  background: #f0f0f0;
+  width: 100%;
+}
+
+.register .row form .box::placeholder {
+  text-transform: capitalize;
+}
+
+.register .row form .address {
+  resize: none;
+  height: 15rem;
+}
 
 .order {
   background: linear-gradient(
@@ -411,7 +475,8 @@ header #menu-bar {
   background-position: center;
 }
 
-.order .row {
+.order .row,
+.login .row {
   display: flex;
   background: #fff;
   margin: 2rem 0;
@@ -420,23 +485,27 @@ header #menu-bar {
   border-radius: 1rem;
 }
 
-.order .row .image {
+.order .row .image,
+.login .row .image {
   flex: 1 1 40%;
 }
 
-.order .row .image img {
+.order .row .image img,
+.login .row .image img {
   height: 100%;
   width: 100%;
   object-fit: cover;
 }
 
-.order .row form {
+.order .row form,
+.login .row form {
   flex: 1 1 60%;
   background: #fff;
   padding: 2rem;
 }
 
-.order .row form .box {
+.order .row form .box,
+.login .row form .box {
   padding: 1rem;
   margin: 1rem 0;
   font-size: 1.5rem;
@@ -446,11 +515,13 @@ header #menu-bar {
   width: 100%;
 }
 
-.order .row form .box::placeholder {
+.order .row form .box::placeholder,
+.login .row form .box::placeholder {
   text-transform: capitalize;
 }
 
-.order .row form .address {
+.order .row form .address,
+.login .row form .address {
   resize: none;
   height: 15rem;
 }
