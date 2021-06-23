@@ -3,9 +3,11 @@ const path = require("path");
 const app = express();
 require("./db/conn");
 const hbs = require("hbs");
-// var cookieParser = require("cookie-parser");
+const cookieParser = require("cookie-parser");
+const auth = require("./middleware/auth");
 
 var usersRouter = require("../routes/users");
+var bookingRouter = require("../routes/bookings");
 
 // var customersRouter = require("../routes/customerregister");
 
@@ -22,9 +24,10 @@ const partials_path = path.join(__dirname, "../templates/partials");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-// app.use(cookieParser());
+app.use(cookieParser());
 
 app.use("/", usersRouter);
+app.use("/", bookingRouter);
 
 // app.use(router);
 
@@ -61,8 +64,8 @@ app.get("/", (req, res) => {
 //   }
 // });
 
-app.get("/continental", (req, res) => {
-  res.render("continental");
+app.get("/chinese", (req, res) => {
+  res.render("chinese");
 });
 app.get("/italian", (req, res) => {
   res.render("italian");

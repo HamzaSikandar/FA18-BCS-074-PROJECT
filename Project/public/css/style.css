@@ -460,10 +460,10 @@ header #menu-bar {
   text-transform: capitalize;
 }
 
-.register .row form .address {
+/* .register .row form .address {
   resize: none;
   height: 15rem;
-}
+} */
 
 .order {
   background: linear-gradient(
@@ -524,6 +524,59 @@ header #menu-bar {
 .login .row form .address {
   resize: none;
   height: 15rem;
+}
+
+.menus {
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.15),
+      rgba(255, 255, 255, 0.15)
+    ),
+    url("../images/registration.jpg") no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.menus .row {
+  display: flex;
+  background: #fff;
+  margin: 1rem 0;
+  overflow: hidden;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
+  border-radius: 1rem;
+  border: black 2px solid;
+  width: 50%;
+  height: 100%;
+  margin-left: 25%;
+}
+
+.menus .row .image {
+  flex: 1 1 0%;
+}
+
+.menus .row .image img {
+  height: 100%;
+  width: 100%;
+  object-fit: fill;
+}
+
+.menus .row form {
+  flex: 1 1 60%;
+  background: #fff;
+  padding: 2rem;
+}
+
+.menus .row form .box {
+  padding: 1rem;
+  margin: 1rem 0;
+  font-size: 1.5rem;
+  color: #333;
+  text-transform: none;
+  background: #f0f0f0;
+  width: 50%;
+}
+
+.menus .row form .box::placeholder {
+  text-transform: capitalize;
 }
 
 .footer {

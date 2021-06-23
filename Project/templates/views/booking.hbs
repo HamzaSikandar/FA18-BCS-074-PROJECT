@@ -1,0 +1,106 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Restaurant</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Restaurant</title>
+
+    <!-- aos css cdn link  -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+    />
+
+    <!-- google fonts cdn link  -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;400;500&family=Roboto:wght@100;300;400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- font awesome cdn link  -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+    />
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <header>
+      <a href="#" class="logo"><img src="images/logo-img.png" alt="" /></a>
+
+      <div id="menu-bar" class="fas fa-hamburger"></div>
+
+      <nav class="navbar" data-aos="fade-down">
+        <ul>
+          <li><a href="./index2"> Back to home page</a></li>
+        </ul>
+      </nav>
+    </header>
+    <!-- order section starts  -->
+
+    <section class="order" id="order">
+      <h1 class="heading">make a <span>Booking</span></h1>
+
+      <div class="row">
+        <form action="/booking" method="POST" data-aos="fade-right">
+          <input type="text" placeholder="your name" class="box" name="name" />
+          <input
+            type="email"
+            placeholder="your email"
+            class="box"
+            name="email"
+          />
+          <input
+            type="number"
+            placeholder="your cellnumber"
+            class="box"
+            name="cellnumber"
+          />
+          <input
+            type="text"
+            placeholder="your booking time"
+            class="box"
+            name="time"
+          />
+          <input
+            type="number"
+            placeholder="no of people"
+            class="box"
+            name="noofpeople"
+          />
+          <input type="submit" value="Book now" class="btn" />
+        </form>
+
+        <div class="image" data-aos="fade-left">
+          <img src="images/form-img.jpg" alt="" />
+        </div>
+      </div>
+    </section>
+
+    <!-- order section ends -->
+    <!-- aos js cdn link  -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"
+    ></script>
+
+    <!-- jquery cdn link  -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+    ></script>
+
+    <!-- custom js file link  -->
+    <script src="/script.js"></script>
+
+    <!-- initializing aos  -->
+
+    <script>
+      AOS.init({ delay: 400, duration: 1000, });
+    </script>
+  </body>
+</html>
