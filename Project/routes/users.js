@@ -83,18 +83,21 @@ router.post("/login", async (req, res) => {
     const password = req.body.password;
 
     const useremail = await Register.findOne({ email });
-
-    const isMatch = await bcrypt.compare(password, useremail.password);
-    const token = await useremail.generateAuthToken();
-    res.cookie("jwt", token, {
-      expires: new Date(Date.now() + 600000),
-      httpOnly: true,
-    });
-    if (isMatch) {
-      console.log("login succesful");
-      res.redirect("/index2");
+    if (!useremail) {
+      res.render("login");
     } else {
-      res.status(201).render("login");
+      const isMatch = await bcrypt.compare(password, useremail.password);
+      if (isMatch) {
+        console.log("login succesful");
+        res.redirect("/index2");
+      } else {
+        res.status(201).render("login");
+      }
+      const token = await useremail.generateAuthToken();
+      res.cookie("jwt", token, {
+        expires: new Date(Date.now() + 600000),
+        httpOnly: true,
+      });
     }
   } catch (error) {
     res.send(error);

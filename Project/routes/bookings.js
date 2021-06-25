@@ -1,7 +1,9 @@
 var express = require("express");
 var router = express.Router();
 var Booking = require("../src/models/reservation");
+var Register = require("../src/models/registers");
 const auth = require("../src/middleware/auth");
+const validateBooking = require("../src/middleware/validatebooking");
 
 router.get("/index2", auth, (req, res) => {
   console.log(`this is a cookie ${req.cookies.jwt}`);
@@ -12,7 +14,7 @@ router.get("/booking", (req, res) => {
   res.render("booking");
 });
 
-router.post("/booking", async (req, res) => {
+router.post("/booking", validateBooking, async (req, res) => {
   try {
     const bookcustomer = new Booking({
       name: req.body.name,
@@ -22,7 +24,7 @@ router.post("/booking", async (req, res) => {
       noofpeople: req.body.noofpeople,
     });
     const booked = await bookcustomer.save();
-    res.render("index2");
+    res.redirect("/index2");
   } catch (error) {
     res.send(error);
   }
