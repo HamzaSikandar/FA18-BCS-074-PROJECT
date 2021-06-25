@@ -4,6 +4,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Restaurant</title>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"
+    ></script>
+
+    <!-- jquery cdn link  -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+    ></script>
+
+    <!-- initializing aos  -->
+
+    <script>
+      AOS.init({ delay: 400, duration: 1000, });
+    </script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
@@ -16,28 +30,45 @@
     <section class="register" id="register">
       <h1 class="heading">Sign Up</h1>
       <div class="row">
-        <form action="/register" method="POST" data-aos="fade-right">
-          <input type="text" placeholder="your firstname" class="box" name="firstname" />
-          <input type="text" placeholder="your lastname" class="box" name="lastname" />
+        <form id="form" action="/register" method="POST" data-aos="fade-right">
+        <div class="form-control">
+          <input type="text" placeholder="your firstname" id="firstname" class="box" name="firstname" /><small>Error message</small>
+        </div>
+        <div class="form-control">
+          <input type="text" placeholder="your lastname" id="lastname" class="box" name="lastname" />
+          <small>Error Message</small>
+        </div>
+        <div class="form-control">
           <input
             type="email"
             placeholder="your email"
+            id="email"
             class="box"
             name="email"
           />
+          <small>Error message</small>
+        </div>
+        <div class="form-control">
           <input
             type="password"
             placeholder="your password"
+            id="password"
             class="box"
             name="password"
           />
+          <small>Error message</small>
+        </div>
+        <div class="form-control">
           <input
             type="password"
             placeholder="confirm password"
+            id="confirmpassword"
             class="box"
             name="confirmpassword"
           />
-          <input type="submit" value="register now" class="btn" />
+          <small>Error message</small>
+        </div>
+          <input type="submit" value="register " class="btn" />
         </form>
 
         <div class="image" data-aos="fade-left">
@@ -45,23 +76,7 @@
         </div>
       </div>
     </section>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"
-    ></script>
-
-    <!-- jquery cdn link  -->
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
-    ></script>
-
-    <!-- custom js file link  -->
+     <!-- custom js file link  -->
     <script src="/script.js"></script>
-
-    <!-- initializing aos  -->
-
-    <script>
-      AOS.init({ delay: 400, duration: 1000, });
-    </script>
-
   </body>
 </html>

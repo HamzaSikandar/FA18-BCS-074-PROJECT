@@ -4,7 +4,6 @@ const jwt = require("jsonwebtoken");
 
 const joi = require("@hapi/joi");
 const Joi = require("@hapi/joi");
-const { func, required } = require("@hapi/joi");
 
 const customerSchema = mongoose.Schema({
   firstname: String,
@@ -48,19 +47,23 @@ customerSchema.pre("save", async function (next) {
 });
 
 const Register = mongoose.model("Register", customerSchema);
+
+function validateCustomer(data) {
+  const schema = Joi.object({
+    firstname: Joi.string().min(3).max(20).required(),
+    lastname: Joi.string().min(3).max(20).required(),
+    email: Joi.string()
+      .email({
+        minDomainSegments: 2,
+        tlds: { allow: ["com", "net"] },
+      })
+      .required(),
+
+    password: Joi.string().min(5).max(20).required(),
+    confirmpassword: Joi.string().min(5).max(20).required(),
+  });
+  return schema.validate(data, { abortEarly: false });
+}
+
 module.exports = Register;
-
-// function validateCustomer(data) {
-//   const schema = Joi.object({
-//     name: Joi.string().min(3).max(20).required(),
-//     email: Joi.string().email({
-//       minDomainSegments: 2,
-//       tlds: { allow: ["com", "net"] },
-//     }).required,
-
-//     password: Joi.string().min(5).max(20).required(),
-//   });
-//   return schema.validate(data, { abortEarly: false });
-// }
-
-// module.exports.validate = validateCustomer;
+module.exports.validate = validateCustomer;

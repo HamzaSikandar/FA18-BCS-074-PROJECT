@@ -39,30 +39,6 @@ hbs.registerPartials(partials_path);
 app.get("/", (req, res) => {
   res.render("index");
 });
-// app.get("/register", (req, res) => {
-//   res.render("register");
-// });
-
-// app.post("/register", async (req, res) => {
-//   try {
-//     const password = req.body.password;
-//     const cpassword = req.body.confirmpassword;
-//     if (password === cpassword) {
-//       const registercustomer = new Register({
-//         name: req.body.name,
-//         email: req.body.email,
-//         password: password,
-//         confirmpassword: cpassword,
-//       });
-//       const registered = await registercustomer.save();
-//       res.status(201).render("index");
-//     } else {
-//       res.send("invalid details");
-//     }
-//   } catch (error) {
-//     res.status(400).send(error);
-//   }
-// });
 
 app.get("/chinese", (req, res) => {
   res.render("chinese");

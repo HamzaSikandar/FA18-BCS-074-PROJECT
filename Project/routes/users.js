@@ -4,18 +4,48 @@ var Register = require("../src/models/registers");
 const bcrypt = require("bcryptjs");
 const cookieParser = require("cookie-parser");
 const auth = require("../src/middleware/auth");
+const validateCustomer = require("../src/middleware/validateuser");
 
 /* GET users listing. */
 router.get("/register", (req, res) => {
   res.render("register");
 });
 
-// router.get("/users", async (req, res) => {
-//   let customers = await Register.find();
-//   return res.send(customers);
-// });
+//get all users
+router.get("/users", async (req, res) => {
+  let customers = await Register.find();
+  return res.send(customers);
+});
 
-router.post("/register", async (req, res) => {
+//get single user
+router.get("/users:id", async (req, res) => {
+  try {
+    let customer = await Register.findById(req.params.id);
+    return res.send(customer);
+  } catch (err) {
+    return res.status(400).send("Invalid ID");
+  }
+});
+
+//update a record
+router.put("/users:id", async (req, res) => {
+  let customer = await Register.findById(req.params.id);
+  customer.firstname = req.body.firstname;
+  customer.lastname = req.body.lastname;
+  customer.email = req.body.email;
+  customer.password = req.body.password;
+  customer.confirmpassword = req.body.confirmpassword;
+  await customer.save();
+  return res.send(customer);
+});
+
+//deleting a record
+router.delete("/users:id", async (req, res) => {
+  let customer = await Register.findByIdAndDelete(req.params.id);
+});
+
+//inserting a record
+router.post("/register", validateCustomer, async (req, res) => {
   try {
     const password = req.body.password;
     const cpassword = req.body.confirmpassword;
@@ -28,6 +58,7 @@ router.post("/register", async (req, res) => {
         confirmpassword: cpassword,
       });
 
+      //generating token
       const token = await registercustomer.generateAuthToken();
       res.cookie("jwt", token, {
         expires: new Date(Date.now + 60000),
